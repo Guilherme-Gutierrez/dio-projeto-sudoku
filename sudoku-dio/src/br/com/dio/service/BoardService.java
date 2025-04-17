@@ -26,6 +26,10 @@ public class BoardService {
         board.reset();
     }
 
+    public int calculateErrors(){
+        return board.calculateErrors();
+    }
+
     public boolean hasErrors(){
         return board.hasErrors();
     }

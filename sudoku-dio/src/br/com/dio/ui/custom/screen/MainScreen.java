@@ -104,7 +104,8 @@ public class MainScreen {
                 case INCOMPLETE -> "O jogo está imcompleto";
                 case COMPLETE -> "O jogo está completo";
             };
-            message += hasErrors ? " e contém erros" : " e não contém erros";
+            int numberOfErrors = boardService.calculateErrors();
+            message += hasErrors ? " e contém %s erro(s)".formatted(numberOfErrors) : " e não contém erros";
             showMessageDialog(null, message);
         });
         mainPanel.add(MainScreen.this.checkGameStatusButton);

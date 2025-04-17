@@ -21,6 +21,16 @@ public class Board {
         return spaces;
     }
 
+    public int calculateErrors(){
+        int numberOfErrors;
+        numberOfErrors = spaces.stream()
+                .flatMap(Collection::stream)
+                .filter(s -> !isNull(s.getActual()))
+                .filter(s -> !s.getActual().equals(s.getExpected()))
+                .toList().size();
+        return numberOfErrors;
+    }
+
     public GameStatusEnum getStatus(){
         if (spaces.stream().flatMap(Collection::stream).noneMatch(s -> !s.isFixed() && nonNull(s.getActual()))){
             return NON_STARTED;
